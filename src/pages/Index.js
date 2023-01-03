@@ -63,7 +63,7 @@ export default function Index() {
           <GenerateChart
             chartQuery={GetTokenPriceQuery}
             chartType="LineBarChart"
-            chartTitle="Weekly Solana Price"
+            chartTitle="Weekly Ethereum Price"
             chartFlipYData={true}
             chartYAxisLabel={["Average Sol Price", "Weekly Price"]}
             chartBackgroundColors={[CHARTCOLORS.BLACK, CHARTCOLORS.COLOR1]}
@@ -73,7 +73,7 @@ export default function Index() {
           <GenerateChart
             chartQuery={GetBlocksWeeklyQuery}
             chartType="TimeBarChart"
-            chartTitle="Solana Blocks Per Week"
+            chartTitle="Blocks Per Week"
             //chartYAxisLabel={["Weekly Submissions"]}
             chartBackgroundColors={[CHARTCOLORS.COLOR1]}
           ></GenerateChart>
