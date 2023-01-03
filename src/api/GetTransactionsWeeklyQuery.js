@@ -3,8 +3,7 @@ select
   date_trunc('week', block_timestamp::timestamp)::date as day_date,
   count(1) as num_txs
 from
-  solana.core.fact_transactions
-where block_timestamp > '2022-01-01'
+  ethereum.core.fact_transactions
 group by
   1
 order by

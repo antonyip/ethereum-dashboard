@@ -3,18 +3,16 @@ with
   latest_txs as (
     select
       max(block_timestamp::timestamp) as max_timestamp,
-      signers
+      FROM_ADDRESS
     from
-      solana.core.fact_transactions
-    where
-      block_timestamp > '2022-01-01'
+      ethereum.core.fact_transactions
     group by
       2
   ),
   time_diff as (
     select
       datediff('day', max_timestamp, CURRENT_TIMESTAMP) as account_age,
-      signers
+      FROM_ADDRESS
     from
       latest_txs
   )

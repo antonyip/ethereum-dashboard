@@ -5,14 +5,13 @@ with
       block_timestamp::timestamp as tz_timestamp,
       LAG(block_timestamp::timestamp) ignore nulls over (
         order by
-          block_id
+          block_number
       ) as prev_timestamp,
       datediff('seconds', prev_timestamp, block_timestamp::timestamp) as seconds_diff
     from
-      solana.core.fact_blocks
-    where tz_timestamp > '2020-11-01'
+      ethereum.core.fact_blocks
     order by
-      block_id asc
+      block_number
   )
 select
   date_trunc('week', tz_timestamp)::date,

@@ -1,11 +1,10 @@
 export const myQuery = `
 select
   date_trunc('week', block_timestamp::timestamp)::date as day_date,
-  sum(fee) as sum_fee,
-  avg(fee) as avg_fee
+  sum(GAS_PRICE * GAS_USED) / pow(10,18) as sum_fee,
+  avg(GAS_PRICE * GAS_USED) / pow(10,18) as avg_fee
 from
-  solana.core.fact_transactions
-where day_date > '2020-11-01'
+  ethereum.core.fact_transactions
 group by
   1
 order by

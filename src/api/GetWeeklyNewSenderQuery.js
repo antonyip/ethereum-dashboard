@@ -3,10 +3,9 @@ with
   first_tx as (
     select
       min(block_timestamp::timestamp) as first_date,
-      signers
+      from_address
     from
-      solana.core.fact_transactions
-    where block_timestamp > '2022-01-01'
+      ethereum.core.fact_transactions
     group by
       2
   )
